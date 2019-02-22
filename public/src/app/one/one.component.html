@@ -1,0 +1,22 @@
+<h2>Details about {{onePet.Name}}</h2>
+<button type="button" class="btn btn-link" [routerLink]="['/']">Home</button>
+
+<div *ngIf="notFoundError">
+    <p *ngIf="notFoundError.message" style="color:red">
+      {{notFoundError.message}}
+    </p>
+  </div>
+
+<p><strong>Pet Type: </strong> {{onePet.type}}</p>
+<p><strong>Description: </strong> {{onePet.description}}</p>
+<strong>Skills: </strong> 
+  <ul *ngFor="let s of onePet.skills">
+    <li>{{s}}</li>
+  </ul>
+
+<p><strong>Likes: </strong> {{onePet.likes}}</p>
+
+<!-- Like for pet -->
+<button type="button" class="btn btn-primary" *ngIf="!liked" (click)="onLike(onePet._id)">Like this pet</button>
+
+<button type="button" class="btn btn-warning" (click)="onButtonDelete(onePet._id)" >Adopt this pet</button>

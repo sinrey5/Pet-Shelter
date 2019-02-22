@@ -1,0 +1,49 @@
+<h2>Know of a pet needing a new home? </h2>
+
+<div *ngIf="createNewErrors">
+  <p *ngIf="createNewErrors.errors.Name" style="color:red">
+    {{createNewErrors.errors.Name.message}}
+  </p>
+  <p *ngIf="createNewErrors.errors.type" style="color:red">
+    {{createNewErrors.errors.type.message}}
+  </p>
+  <p *ngIf="createNewErrors.errors.description" style="color:red">
+    {{createNewErrors.errors.description.message}}
+  </p>
+</div>
+
+<form>
+  <td>
+
+ <tr>
+ Pet Name:  </tr>
+  <tr><label><input type="text" class="form-control" name="newPet.Name" [(ngModel)]="newPet.Name" />
+</label></tr>
+<br>
+
+<tr> Pet Type: </tr> 
+    <tr><label><input type="text" class="form-control" name="newPet.type" [(ngModel)]="newPet.type" />
+</label>
+</tr> 
+<br>
+<tr>Description:  </tr>
+<tr><label> <input type="text" class="form-control" name="newPet.description" [(ngModel)]="newPet.description" />
+</label>
+</td>
+<p>Skills: </p>
+<ul>
+  <li>
+    <label>Skill 1: <input type="text" class="form-control" name="newPet.skills[0]" [(ngModel)]="newPet.skills[0]" /></label>
+  </li>
+  <li>
+    <label>Skill 2: <input type="text"class="form-control" name="newPet.skills[1]" [(ngModel)]="newPet.skills[1]" /></label>
+  </li>
+  <li>
+    <label>Skill 3: <input type="text" class="form-control" name="newPet.skills[2]" [(ngModel)]="newPet.skills[2]" /></label>
+  </li>
+</ul>
+
+<br>
+<input type="submit" class="btn btn-success" value="Submit" (click)="onSubmitNew()"/>
+<button type="button" class="btn btn-danger" [routerLink]="['/']">Cancel</button>
+</form>
